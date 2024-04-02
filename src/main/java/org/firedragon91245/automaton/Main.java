@@ -1,7 +1,7 @@
-package org.firedragon91245;
+package org.firedragon91245.automaton;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        new AutomatonGame();
     }
 }
