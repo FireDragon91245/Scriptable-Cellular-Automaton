@@ -20,6 +20,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
 
     implementation("com.github.Milchreis:UiBooster:1.20.1")
+    implementation("com.fifesoft:rsyntaxtextarea:3.4.0")
+    implementation("com.fifesoft:autocomplete:3.3.1")
 }
 
 tasks.test {

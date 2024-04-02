@@ -80,15 +80,19 @@ public class AutomatonGame extends JFrame {
         desktop.setVisible(true);
         setContentPane(desktop);
 
-        InternalFrame frame = new InternalFrame();
+        CodeEditor frame = new CodeEditor();
         frame.setSize(200, 100);
         frame.setLocation(new Point(100, 100));
         frame.setVisible(true);
+        //frame.useAsParent(desktop);
 
         desktop.add(frame);
 
         JMenuBar menuBar = generateMenuBar();
         setJMenuBar(menuBar);
+
+        frame.useAsParent(desktop);
+        frame.updateMenuBarCallback(menuBar::updateUI);
 
         menuBar.updateUI();
 
