@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63d754cd-1631-47ce-9ab2-effeb0ddadd5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/CodeEditor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/LuaAutocomplete.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/GameIcons.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetCompletion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetSegment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetSegmentTypes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/AutomatonGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/AutomatonGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/InternalFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/InternalFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/CodeEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/CodeEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/LuaAutocomplete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/LuaAutocomplete.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +26,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -44,6 +46,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.Build Scriptable-Cellular-Automaton.executor": "Run",
+    "Gradle.Download Sources.executor": "Run",
     "Gradle.Scriptable-Cellular-Automaton [clean].executor": "Run",
     "Gradle.automaton [run].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -56,6 +59,11 @@
     "settings.editor.selected.configurable": "project.propCompiler"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.firedragon91245.automaton" />
+    </key>
+  </component>
   <component name="RunManager" selected="Gradle.automaton [run]">
     <configuration name="Scriptable-Cellular-Automaton [clean]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
       <ExternalSystemSettings>
@@ -123,5 +131,21 @@
       <updated>1712048722253</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/LuaAutocomplete.java</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="GradleRunConfiguration">
+        <watch expression="snippetCode.charAt(i)" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

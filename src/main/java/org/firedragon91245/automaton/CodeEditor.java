@@ -33,6 +33,7 @@ public class CodeEditor extends InternalFrame{
 
         CompletionProvider provider = LuaAutocomplete.getProvider();
         AutoCompletion ac = new AutoCompletion(provider);
+        ac.setParameterAssistanceEnabled(true);
         ac.install(codeArea);
 
         components.add(scrollPane);

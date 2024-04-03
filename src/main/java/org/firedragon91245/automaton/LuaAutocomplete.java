@@ -10,7 +10,14 @@ public class LuaAutocomplete {
 
         provider.addCompletion(new BasicCompletion(provider, "if"));
 
-        provider.addCompletion(new FunctionCompletion(provider, "test", "int"));
+        provider.addCompletion(new ShorthandCompletion(provider, "func", "function %1(%2)\n    %3\nend", "function snippet", "function template"));
+
+        TemplateCompletion completion = new TemplateCompletion(provider, "func", "func", "function ${test} ${abc}", "for loop", "for loop template");
+
+        //SnippetCompletion completion = new SnippetCompletion(provider, "func", "function %1{myFunc}(%2)\n    %3\nend", "function snippet");
+        completion.setIcon(GameIcons.SNIPPET);
+
+        provider.addCompletion(completion);
 
         return provider;
     }
