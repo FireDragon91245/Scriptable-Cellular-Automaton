@@ -5,7 +5,9 @@ import org.fife.ui.autocomplete.CompletionProvider;
 import org.fife.ui.autocomplete.ParameterizedCompletion;
 import org.fife.ui.autocomplete.ParameterizedCompletionInsertionInfo;
 
+import javax.swing.text.BadLocationException;
 import javax.swing.text.JTextComponent;
+import javax.swing.text.Position;
 import java.util.ArrayList;
 import java.util.IllegalFormatWidthException;
 import java.util.List;
@@ -19,8 +21,7 @@ public class SnippetCompletion extends AbstractCompletion implements Parameteriz
     private final String description;
 
     List<SnippetSegment> segments = new ArrayList<>();
-
-    private final Pattern insertionPattern = Pattern.compile("%(\\d+)");
+    List<Parameter> parameters = new ArrayList<>();
 
     public SnippetCompletion(CompletionProvider provider, String snippetName, String snippetCode, String description) {
         super(provider);
@@ -75,7 +76,9 @@ public class SnippetCompletion extends AbstractCompletion implements Parameteriz
                                 segments.add(new SnippetSegment(SnippetSegmentTypes.TEXT, sb.toString()));
                                 sb.delete(0, sb.length());
                             }
-                            segments.add(new SnippetSegment(SnippetSegmentTypes.TAB_REPLACE, snippetCode.substring(i + 1, i + consumed)));
+                            String name = snippetCode.substring(i + 1, i + consumed);
+                            segments.add(new SnippetSegment(SnippetSegmentTypes.TAB_REPLACE, name));
+                            parameters.add(new Parameter(null, name));
                             i = i + consumed;
                         }
                         else
@@ -132,40 +135,100 @@ public class SnippetCompletion extends AbstractCompletion implements Parameteriz
 
     @Override
     public String getDefinitionString() {
-        return "definition string";
+        return snippetName;
     }
 
     @Override
     public Parameter getParam(int index) {
-        return new Parameter("int", "test", true);
+        return parameters.get(index);
     }
 
     @Override
     public int getParamCount() {
-        return 1;
+        return parameters.size();
     }
 
     @Override
     public ParameterizedCompletionInsertionInfo getInsertionInfo(JTextComponent tc, boolean replaceTabsWithSpaces) {
         ParameterizedCompletionInsertionInfo info = new ParameterizedCompletionInsertionInfo();
-        info.addReplacementLocation(5, 8);
-        info.setInitialSelection(5,8);
-        info.addReplacementCopy("test", 9, 11);
+
+        StringBuilder sb = new StringBuilder();
+
+        int currentIndex = 0;
+        int firstCursor = -1;
+        int lastCursor = 0;
+
+        int firstRegion = 0;
+        int firstRegionLength = 0;
+
+        for(SnippetSegment segment : segments)
+        {
+            switch (segment.getType())
+            {
+                case TEXT:
+                    sb.append(segment.getText());
+                    currentIndex += segment.getTextLength();
+                    break;
+                case TAB_POS:
+                    if(firstCursor == -1)
+                    {
+                        firstCursor = currentIndex;
+                        firstRegion = currentIndex;
+                        firstRegionLength = 0;
+                    }
+                    info.addReplacementLocation(currentIndex, currentIndex);
+                    lastCursor = currentIndex;
+                    break;
+                case TAB_REPLACE:
+                    if(firstCursor == -1)
+                    {
+                        firstCursor = currentIndex;
+                        firstRegion = currentIndex;
+                        firstRegionLength = segment.getTextLength();
+                    }
+                    sb.append(segment.getText());
+                    info.addReplacementLocation(currentIndex, currentIndex + segment.getTextLength());
+                    currentIndex += segment.getTextLength();
+                    lastCursor = currentIndex;
+                    break;
+            }
+        }
+
+        try {
+            info.setCaretRange(firstCursor, tc.getDocument().createPosition(sb.length()));
+        } catch (BadLocationException e) {
+            throw new RuntimeException(e);
+        }
+
+        info.setDefaultEndOffs(sb.length());
+        info.setInitialSelection(firstRegion, firstRegion + firstRegionLength);
+        info.setTextToInsert(sb.toString());
+
         return info;
     }
 
     @Override
     public boolean getShowParameterToolTip() {
-        return true;
+        return false;
     }
 
     @Override
     public String getReplacementText() {
-        return "test 123 abc";
+        return null;
     }
 
     @Override
     public String getSummary() {
-        return "my summary";
+        return description;
+    }
+
+    @Override
+    public String toString() {
+        return snippetName;
+    }
+
+    @Override
+    public String getInputText() {
+        return snippetName;
     }
 }

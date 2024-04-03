@@ -15,4 +15,16 @@ public class SnippetSegment {
         this.snippetSegmentTypes = snippetSegmentTypes;
         this.s = null;
     }
+
+    public SnippetSegmentTypes getType() {
+        return snippetSegmentTypes;
+    }
+
+    public String getText() {
+        return s;
+    }
+
+    public int getTextLength() {
+        return s != null ? s.length() : 0;
+    }
 }

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class CodeEditor extends InternalFrame{
 
-    private ArrayList<Component> components = new ArrayList<>();
+    private final ArrayList<Component> components = new ArrayList<>();
 
     public CodeEditor()
     {

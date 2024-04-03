@@ -70,13 +70,14 @@ public class InternalFrame extends JInternalFrame implements ComponentListener {
         Component com = e.getComponent();
         Point pos = getComponentPositionRelativeToParent(com);
 
-        Dimension parentSize = parent.getSize();
-        if(pos.x < 0 || pos.y < 0 || pos.x + com.getWidth() > parentSize.width || pos.y + com.getHeight() > parentSize.height)
-        {
-            com.setLocation(Math.max(0, Math.min(parentSize.width - com.getWidth(), pos.x)), Math.max(0, Math.min(parentSize.height - com.getHeight(), pos.y)));
-            parent.repaint();
-            if(menuBarUpdateCallback != null)
-                menuBarUpdateCallback.run();
+        if(parent != null) {
+            Dimension parentSize = parent.getSize();
+            if (pos.x < 0 || pos.y < 0 || pos.x + com.getWidth() > parentSize.width || pos.y + com.getHeight() > parentSize.height) {
+                com.setLocation(Math.max(0, Math.min(parentSize.width - com.getWidth(), pos.x)), Math.max(0, Math.min(parentSize.height - com.getHeight(), pos.y)));
+                parent.repaint();
+                if (menuBarUpdateCallback != null)
+                    menuBarUpdateCallback.run();
+            }
         }
     }
 

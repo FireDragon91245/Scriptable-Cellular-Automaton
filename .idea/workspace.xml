@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63d754cd-1631-47ce-9ab2-effeb0ddadd5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/GameIcons.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetCompletion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetSegment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetSegmentTypes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/CodeEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/CodeEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/InternalFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/InternalFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/LuaAutocomplete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/LuaAutocomplete.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetCompletion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetCompletion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetSegment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetSegment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,6 +131,17 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -140,6 +150,45 @@
           <line>8</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetCompletion.java</url>
+          <line>152</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/LuaAutocomplete.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetCompletion.java</url>
+          <line>154</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fifesoft/autocomplete/3.3.1/7a3aa4a129761a9e98a2b7b71f730a9699fcbdb7/autocomplete-3.3.1-sources.jar!/org/fife/ui/autocomplete/ParameterizedCompletionContext.java</url>
+          <line>1088</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fifesoft/autocomplete/3.3.1/7a3aa4a129761a9e98a2b7b71f730a9699fcbdb7/autocomplete-3.3.1-sources.jar!/org/fife/ui/autocomplete/TemplateCompletion.java</url>
+          <line>168</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fifesoft/autocomplete/3.3.1/7a3aa4a129761a9e98a2b7b71f730a9699fcbdb7/autocomplete-3.3.1-sources.jar!/org/fife/ui/autocomplete/TemplateCompletion.java</url>
+          <line>255</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fifesoft/autocomplete/3.3.1/7a3aa4a129761a9e98a2b7b71f730a9699fcbdb7/autocomplete-3.3.1-sources.jar!/org/fife/ui/autocomplete/TemplateCompletion.java</url>
+          <line>261</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="5" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
