@@ -4,6 +4,7 @@ import org.fife.ui.autocomplete.AbstractCompletion;
 import org.fife.ui.autocomplete.CompletionProvider;
 import org.fife.ui.autocomplete.ParameterizedCompletion;
 import org.fife.ui.autocomplete.ParameterizedCompletionInsertionInfo;
+import org.fife.ui.rsyntaxtextarea.RSyntaxUtilities;
 
 import javax.swing.text.BadLocationException;
 import javax.swing.text.JTextComponent;
@@ -88,6 +89,7 @@ public class SnippetCompletion extends AbstractCompletion implements Parameteriz
                                 sb.delete(0, sb.length());
                             }
                             segments.add(new SnippetSegment(SnippetSegmentTypes.TAB_POS));
+                            parameters.add(new Parameter(null, "Tab " + index));
                         }
                     }
                     else
@@ -154,14 +156,25 @@ public class SnippetCompletion extends AbstractCompletion implements Parameteriz
 
         StringBuilder sb = new StringBuilder();
 
+        int dot = tc.getCaretPosition();
+
+        String indent = null;
+        try {
+            indent = RSyntaxUtilities.getLeadingWhitespace(tc.getDocument(), dot);
+        } catch (BadLocationException e) {
+            throw new RuntimeException(e);
+        }
+
+        List<SnippetSegment> segmentsIncludingIndent = addIndents(indent, segments);
+
         int currentIndex = 0;
         int firstCursor = -1;
-        int lastCursor = 0;
+        //int lastCursor = 0;
 
         int firstRegion = 0;
         int firstRegionLength = 0;
 
-        for(SnippetSegment segment : segments)
+        for(SnippetSegment segment : segmentsIncludingIndent)
         {
             switch (segment.getType())
             {
@@ -176,8 +189,8 @@ public class SnippetCompletion extends AbstractCompletion implements Parameteriz
                         firstRegion = currentIndex;
                         firstRegionLength = 0;
                     }
-                    info.addReplacementLocation(currentIndex, currentIndex);
-                    lastCursor = currentIndex;
+                    info.addReplacementLocation(currentIndex + dot, currentIndex + dot);
+                    //lastCursor = currentIndex;
                     break;
                 case TAB_REPLACE:
                     if(firstCursor == -1)
@@ -187,24 +200,45 @@ public class SnippetCompletion extends AbstractCompletion implements Parameteriz
                         firstRegionLength = segment.getTextLength();
                     }
                     sb.append(segment.getText());
-                    info.addReplacementLocation(currentIndex, currentIndex + segment.getTextLength());
+                    info.addReplacementLocation(currentIndex + dot, currentIndex + segment.getTextLength() + dot);
                     currentIndex += segment.getTextLength();
-                    lastCursor = currentIndex;
+                    //lastCursor = currentIndex;
                     break;
             }
         }
 
         try {
-            info.setCaretRange(firstCursor, tc.getDocument().createPosition(sb.length()));
+            info.setCaretRange(firstCursor + dot, tc.getDocument().createPosition(dot + sb.length()));
         } catch (BadLocationException e) {
             throw new RuntimeException(e);
         }
 
         info.setDefaultEndOffs(sb.length());
-        info.setInitialSelection(firstRegion, firstRegion + firstRegionLength);
+        info.setInitialSelection(firstRegion + dot, firstRegion + firstRegionLength + dot);
         info.setTextToInsert(sb.toString());
 
         return info;
+    }
+
+    private List<SnippetSegment> addIndents(String indent, List<SnippetSegment> segments) {
+        if(indent == null || indent.isEmpty())
+        {
+            return segments;
+        }
+
+        List<SnippetSegment> newSegments = new ArrayList<>();
+        for(SnippetSegment segment : segments)
+        {
+            if(segment.getType() == SnippetSegmentTypes.TEXT)
+            {
+                newSegments.add(segment.copy().setText(segment.getText().replace("\n", "\n" + indent)));
+            }
+            else
+            {
+                newSegments.add(segment);
+            }
+        }
+        return newSegments;
     }
 
     @Override

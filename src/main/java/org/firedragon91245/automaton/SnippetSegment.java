@@ -4,7 +4,7 @@ public class SnippetSegment {
 
 
     private final SnippetSegmentTypes snippetSegmentTypes;
-    private final String s;
+    private String s;
 
     public SnippetSegment(SnippetSegmentTypes snippetSegmentTypes, String s) {
         this.snippetSegmentTypes = snippetSegmentTypes;
@@ -26,5 +26,14 @@ public class SnippetSegment {
 
     public int getTextLength() {
         return s != null ? s.length() : 0;
+    }
+
+    public SnippetSegment copy() {
+        return new SnippetSegment(snippetSegmentTypes, s);
+    }
+
+    public SnippetSegment setText(String text) {
+        this.s = text;
+        return this;
     }
 }

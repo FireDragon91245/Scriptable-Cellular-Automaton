@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63d754cd-1631-47ce-9ab2-effeb0ddadd5" name="Changes" comment="">
+    <list default="true" id="63d754cd-1631-47ce-9ab2-effeb0ddadd5" name="Changes" comment="Code Editor Custom Snippet API">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/CodeEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/CodeEditor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/InternalFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/InternalFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/LuaAutocomplete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/LuaAutocomplete.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetCompletion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetCompletion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetSegment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetSegment.java" afterDir="false" />
     </list>
@@ -51,11 +48,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propCompiler"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -129,6 +127,15 @@
       <option name="presentableId" value="Default" />
       <updated>1712048722253</updated>
     </task>
+    <task id="LOCAL-00001" summary="Code Editor Custom Snippet API">
+      <option name="closed" value="true" />
+      <created>1712175562876</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712175562876</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -142,6 +149,10 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Code Editor Custom Snippet API" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code Editor Custom Snippet API" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -152,7 +163,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetCompletion.java</url>
-          <line>152</line>
+          <line>154</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -162,7 +173,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetCompletion.java</url>
-          <line>154</line>
+          <line>156</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
