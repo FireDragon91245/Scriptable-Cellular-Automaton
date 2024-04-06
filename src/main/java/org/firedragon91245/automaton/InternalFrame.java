@@ -1,9 +1,7 @@
 package org.firedragon91245.automaton;
 
-import javax.security.auth.callback.Callback;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 

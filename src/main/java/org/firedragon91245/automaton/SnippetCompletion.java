@@ -8,26 +8,20 @@ import org.fife.ui.rsyntaxtextarea.RSyntaxUtilities;
 
 import javax.swing.text.BadLocationException;
 import javax.swing.text.JTextComponent;
-import javax.swing.text.Position;
 import java.util.ArrayList;
-import java.util.IllegalFormatWidthException;
 import java.util.List;
 import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class SnippetCompletion extends AbstractCompletion implements ParameterizedCompletion {
     private final String snippetName;
-    private final String snippetCode;
     private final String description;
 
-    List<SnippetSegment> segments = new ArrayList<>();
-    List<Parameter> parameters = new ArrayList<>();
+    private final List<SnippetSegment> segments = new ArrayList<>();
+    private final List<Parameter> parameters = new ArrayList<>();
 
     public SnippetCompletion(CompletionProvider provider, String snippetName, String snippetCode, String description) {
         super(provider);
         this.snippetName = snippetName;
-        this.snippetCode = snippetCode;
         this.description = description;
         parse(snippetCode);
     }
@@ -38,68 +32,55 @@ public class SnippetCompletion extends AbstractCompletion implements Parameteriz
         for(int i = 0; i < snippetCode.length(); i++)
         {
             char c = snippetCode.charAt(i);
-            switch (c){
-                case '%':
-                    Character next = safeCharAt(snippetCode, i + 1);
+            if (c == '%') {
+                Character next = safeCharAt(snippetCode, i + 1);
 
-                    int consumed = 0;
-                    if(next == null) {
-                        throw new IllegalArgumentException("Invalid snippet code: " + snippetCode);
+                int consumed;
+                if (next == null) {
+                    throw new IllegalArgumentException("Invalid snippet code: " + snippetCode);
+                } else if (next == '%') {
+                    sb.append('%');
+                } else if ((consumed = consumeNumber(snippetCode, i + 1)) != -1) {
+                    i++;
+                    int index;
+                    try {
+                        index = Integer.parseInt(snippetCode.substring(i, i + consumed));
+                    } catch (NumberFormatException e) {
+                        throw new IllegalArgumentException("[IMPOSSIBLE] Invalid snippet code: " + snippetCode);
                     }
-                    else if (next == '%') {
-                        sb.append('%');
-                    }
-                    else if((consumed = consumeNumber(snippetCode, i + 1)) != -1)
-                    {
-                        i++;
-                        int index = 0;
-                        try {
-                            index = Integer.parseInt(snippetCode.substring(i, i + consumed));
-                        } catch (NumberFormatException e) {
-                            throw new IllegalArgumentException("[IMPOSSIBLE] Invalid snippet code: " + snippetCode);
-                        }
-                        Character afterIndex = safeCharAt(snippetCode, i + consumed);
-                        boolean isReplacement = false;
-                        if(afterIndex != null)
-                        {
-                            if (afterIndex == '{') {
-                                isReplacement = true;
-                            }
-                        }
-                        if(isReplacement)
-                        {
-                            i += consumed;
-                            if((consumed = consumeReplacement(snippetCode, i + 1)) == -1)
-                            {
-                                throw new IllegalArgumentException("Invalid snippet code: " + snippetCode);
-                            }
-                            if(!sb.isEmpty()) {
-                                segments.add(new SnippetSegment(SnippetSegmentTypes.TEXT, sb.toString()));
-                                sb.delete(0, sb.length());
-                            }
-                            String name = snippetCode.substring(i + 1, i + consumed);
-                            segments.add(new SnippetSegment(SnippetSegmentTypes.TAB_REPLACE, name));
-                            parameters.add(new Parameter(null, name));
-                            i = i + consumed;
-                        }
-                        else
-                        {
-                            if(!sb.isEmpty()) {
-                                segments.add(new SnippetSegment(SnippetSegmentTypes.TEXT, sb.toString()));
-                                sb.delete(0, sb.length());
-                            }
-                            segments.add(new SnippetSegment(SnippetSegmentTypes.TAB_POS));
-                            parameters.add(new Parameter(null, "Tab " + index));
+                    Character afterIndex = safeCharAt(snippetCode, i + consumed);
+                    boolean isReplacement = false;
+                    if (afterIndex != null) {
+                        if (afterIndex == '{') {
+                            isReplacement = true;
                         }
                     }
-                    else
-                    {
-                        throw new IllegalArgumentException("Invalid snippet code: " + snippetCode);
+                    if (isReplacement) {
+                        i += consumed;
+                        if ((consumed = consumeReplacement(snippetCode, i + 1)) == -1) {
+                            throw new IllegalArgumentException("Invalid snippet code: " + snippetCode);
+                        }
+                        if (!sb.isEmpty()) {
+                            segments.add(new SnippetSegment(SnippetSegmentTypes.TEXT, sb.toString()));
+                            sb.delete(0, sb.length());
+                        }
+                        String name = snippetCode.substring(i + 1, i + consumed);
+                        segments.add(new SnippetSegment(SnippetSegmentTypes.TAB_REPLACE, name));
+                        parameters.add(new Parameter(null, name));
+                        i = i + consumed;
+                    } else {
+                        if (!sb.isEmpty()) {
+                            segments.add(new SnippetSegment(SnippetSegmentTypes.TEXT, sb.toString()));
+                            sb.delete(0, sb.length());
+                        }
+                        segments.add(new SnippetSegment(SnippetSegmentTypes.TAB_POS));
+                        parameters.add(new Parameter(null, "Tab " + index));
                     }
-                    break;
-                    default:
-                        sb.append(c);
-                        break;
+                } else {
+                    throw new IllegalArgumentException("Invalid snippet code: " + snippetCode);
+                }
+            } else {
+                sb.append(c);
             }
         }
 
@@ -158,7 +139,7 @@ public class SnippetCompletion extends AbstractCompletion implements Parameteriz
 
         int dot = tc.getCaretPosition();
 
-        String indent = null;
+        String indent;
         try {
             indent = RSyntaxUtilities.getLeadingWhitespace(tc.getDocument(), dot);
         } catch (BadLocationException e) {
