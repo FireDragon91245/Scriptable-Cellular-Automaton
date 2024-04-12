@@ -33,6 +33,13 @@ public class CodeEditor extends InternalFrame{
 
         CompletionProvider provider = LuaAutocomplete.getProvider();
         AutoCompletion ac = new AutoCompletion(provider);
+        ac.setShowDescWindow(true);
+        ac.setParameterAssistanceEnabled(true);
+
+        ac.setAutoCompleteEnabled(true);
+        ac.setAutoActivationEnabled(true);
+        ac.setAutoCompleteSingleChoices(true);
+        ac.setAutoActivationDelay(800);
         ac.setParameterAssistanceEnabled(true);
         ac.install(codeArea);
 

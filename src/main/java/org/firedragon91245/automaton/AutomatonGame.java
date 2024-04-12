@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 
 public class AutomatonGame extends JFrame {
 
+    CodeEditor codeEditor = new CodeEditor();
+
     public AutomatonGame() {
         setTitle("Scriptable Automaton - By FireDragon91245");
         Dimension dim = GetMonitorDimensions();
@@ -40,6 +42,16 @@ public class AutomatonGame extends JFrame {
         menuBar.add(view);
 
         JCheckBoxMenuItem viewCodeEditor = new JCheckBoxMenuItem("Code Editor");
+        viewCodeEditor.addItemListener(e -> {
+            if (viewCodeEditor.isSelected())
+            {
+                codeEditor.show();
+            }
+            else
+            {
+                codeEditor.hide();
+            }
+        });
         viewCodeEditor.setVisible(true);
         view.add(viewCodeEditor);
 
@@ -57,6 +69,11 @@ public class AutomatonGame extends JFrame {
         viewReset.setVisible(true);
         view.add(viewReset);
 
+        JMenuItem viewReload = new JMenuItem("Reload View");
+        viewReload.addActionListener(this::menuViewReloadView);
+        viewReload.setVisible(true);
+        view.add(viewReload);
+
         view.addSeparator();
 
         JMenuItem viewOptions = new JMenuItem("Options");
@@ -64,7 +81,14 @@ public class AutomatonGame extends JFrame {
         viewOptions.addActionListener(this::menuViewOptionsAction);
         view.add(viewOptions);
 
+
         return menuBar;
+    }
+
+    private void menuViewReloadView(ActionEvent event) {
+        SwingUtilities.updateComponentTreeUI(this);
+        this.validate();
+        this.repaint();
     }
 
     private void menuViewOptionsAction(ActionEvent actionEvent) {
@@ -80,19 +104,30 @@ public class AutomatonGame extends JFrame {
         desktop.setVisible(true);
         setContentPane(desktop);
 
-        CodeEditor frame = new CodeEditor();
-        frame.setSize(200, 100);
-        frame.setLocation(new Point(100, 100));
-        frame.setVisible(true);
+        codeEditor.setSize(200, 100);
+        codeEditor.setLocation(new Point(100, 100));
         //frame.useAsParent(desktop);
 
-        desktop.add(frame);
+        //InternalFrame frame2 = new InternalFrame("test");
+        //JList<String> list = new JList<String>(new String[]{"Hello", "World", "Test", "List", "Items"});
+        //JLabel lbl = new JLabel();
+        //lbl.setText("Hello World");
+        //lbl.setIcon(GameIcons.SNIPPET_ICON);
+        //lbl.setVisible(true);
+        //list.setVisible(true);
+        //frame2.add(list);
+        //frame2.setVisible(true);
+        //frame2.setSize(200, 100);
+        //desktop.add(frame2);
+
+
+        desktop.add(codeEditor);
 
         JMenuBar menuBar = generateMenuBar();
         setJMenuBar(menuBar);
 
-        frame.useAsParent(desktop);
-        frame.updateMenuBarCallback(menuBar::updateUI);
+        codeEditor.useAsParent(desktop);
+        codeEditor.updateMenuBarCallback(menuBar::updateUI);
 
         menuBar.updateUI();
 

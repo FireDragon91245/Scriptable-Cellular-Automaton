@@ -2,22 +2,24 @@ package org.firedragon91245.automaton;
 
 import org.fife.ui.autocomplete.*;
 
+import java.util.List;
+
 public class LuaAutocomplete {
 
     public static CompletionProvider getProvider()
     {
         DefaultCompletionProvider provider = new DefaultCompletionProvider();
 
-        provider.addCompletion(new BasicCompletion(provider, "if"));
+        SnippetCompletion snippetFunc = new SnippetCompletion(provider, "func", "function %1{myFunc}(%2)\n    %3\nend", "function snippet");
+        snippetFunc.setIcon(GameIcons.SNIPPET_ICON);
+        provider.addCompletion(snippetFunc);
 
-        provider.addCompletion(new ShorthandCompletion(provider, "func", "function %1(%2)\n    %3\nend", "function snippet", "function template"));
+        //FunctionCompletion completion = new FunctionCompletion(provider, "print", "void");
+        //completion.setParams(List.of(new ParameterizedCompletion.Parameter("text", "string"), new ParameterizedCompletion.Parameter("...", "any")));
+        //BasicCompletion completion = new BasicCompletion(provider, "if", "if");
+        //provider.addCompletion(completion);
 
-        //TemplateCompletion completion = new TemplateCompletion(provider, "func", "func", "function ${test} ${abc}", "for loop", "for loop template");
-
-        SnippetCompletion completion = new SnippetCompletion(provider, "func", "function %1{myFunc}(%2)\n    %3\nend", "function snippet");
-        completion.setIcon(GameIcons.SNIPPET);
-
-        provider.addCompletion(completion);
+        provider.setListCellRenderer(new LuaCellRenderer());
 
         return provider;
     }

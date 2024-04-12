@@ -224,7 +224,7 @@ public class SnippetCompletion extends AbstractCompletion implements Parameteriz
 
     @Override
     public boolean getShowParameterToolTip() {
-        return false;
+        return true;
     }
 
     @Override

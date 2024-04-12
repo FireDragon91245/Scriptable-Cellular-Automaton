@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
+    <option name="SCOPE_TYPE" value="8" />
+    <option name="CUSTOM_SCOPE_NAME" value="Module 'automaton.main'" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63d754cd-1631-47ce-9ab2-effeb0ddadd5" name="Changes" comment="Code Editor Custom Snippet API">
+    <list default="true" id="63d754cd-1631-47ce-9ab2-effeb0ddadd5" name="Changes" comment="Code Cleanup">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/GameSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/GameSettingsSaveEventArgs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/LuaCellRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SaveOperationCallback.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/AutomatonGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/AutomatonGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/CodeEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/CodeEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/GameIcons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/GameIcons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/LuaAutocomplete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/LuaAutocomplete.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetCompletion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetCompletion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetSegment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetSegment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,16 +32,55 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="automaton" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="automaton" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="automaton" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="automaton" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -43,16 +95,24 @@
   "keyToString": {
     "Gradle.Build Scriptable-Cellular-Automaton.executor": "Run",
     "Gradle.Download Sources.executor": "Run",
+    "Gradle.Scriptable-Cellular-Automaton [buildDependents].executor": "Run",
+    "Gradle.Scriptable-Cellular-Automaton [check].executor": "Run",
     "Gradle.Scriptable-Cellular-Automaton [clean].executor": "Run",
+    "Gradle.Scriptable-Cellular-Automaton [dependencies].executor": "Run",
     "Gradle.automaton [run].executor": "Run",
+    "JavaMethodFindUsagesOptions.isImplementingMethods": "true",
+    "JavaMethodFindUsagesOptions.isSearchForTextOccurrences": "true",
+    "Kotlin script (Beta).build.gradle.kts.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Rick/Downloads/AutoComplete-master/AutoComplete-master/AutoCompleteDemo",
     "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
@@ -62,6 +122,50 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.automaton [run]">
+    <configuration name="Scriptable-Cellular-Automaton [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="buildDependents" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Scriptable-Cellular-Automaton [check]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="check" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="Scriptable-Cellular-Automaton [clean]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -74,6 +178,28 @@
         <option name="taskNames">
           <list>
             <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Scriptable-Cellular-Automaton [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dependencies" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -106,10 +232,29 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="build.gradle.kts" type="KotlinStandaloneScriptRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <module name="automaton" />
+      <option name="filePath" value="$PROJECT_DIR$/build.gradle.kts" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Gradle.automaton [run]" />
       <item itemvalue="Gradle.Scriptable-Cellular-Automaton [clean]" />
+      <item itemvalue="Gradle.Scriptable-Cellular-Automaton [buildDependents]" />
+      <item itemvalue="Gradle.Scriptable-Cellular-Automaton [check]" />
+      <item itemvalue="Gradle.Scriptable-Cellular-Automaton [dependencies]" />
+      <item itemvalue="Kotlin script (Beta).build.gradle.kts" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.Scriptable-Cellular-Automaton [dependencies]" />
+        <item itemvalue="Gradle.Scriptable-Cellular-Automaton [buildDependents]" />
+        <item itemvalue="Gradle.Scriptable-Cellular-Automaton [check]" />
+        <item itemvalue="Kotlin script (Beta).build.gradle.kts" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -135,7 +280,23 @@
       <option name="project" value="LOCAL" />
       <updated>1712175562876</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Snippets fully functional">
+      <option name="closed" value="true" />
+      <created>1712438181945</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712438181945</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Code Cleanup">
+      <option name="closed" value="true" />
+      <created>1712438536183</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712438536183</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -151,36 +312,13 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Code Editor Custom Snippet API" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code Editor Custom Snippet API" />
+    <MESSAGE value="Snippets fully functional" />
+    <MESSAGE value="Code Cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code Cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/LuaAutocomplete.java</url>
-          <line>8</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetCompletion.java</url>
-          <line>154</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/LuaAutocomplete.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetCompletion.java</url>
-          <line>156</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fifesoft/autocomplete/3.3.1/7a3aa4a129761a9e98a2b7b71f730a9699fcbdb7/autocomplete-3.3.1-sources.jar!/org/fife/ui/autocomplete/ParameterizedCompletionContext.java</url>
-          <line>1088</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fifesoft/autocomplete/3.3.1/7a3aa4a129761a9e98a2b7b71f730a9699fcbdb7/autocomplete-3.3.1-sources.jar!/org/fife/ui/autocomplete/TemplateCompletion.java</url>
           <line>168</line>
@@ -196,16 +334,46 @@
           <line>261</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fifesoft/autocomplete/3.3.1/7a3aa4a129761a9e98a2b7b71f730a9699fcbdb7/autocomplete-3.3.1-sources.jar!/org/fife/ui/autocomplete/CompletionCellRenderer.java</url>
+          <line>646</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fifesoft/autocomplete/3.3.1/7a3aa4a129761a9e98a2b7b71f730a9699fcbdb7/autocomplete-3.3.1-sources.jar!/org/fife/ui/autocomplete/CompletionCellRenderer.java</url>
+          <line>328</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fifesoft/autocomplete/3.3.1/7a3aa4a129761a9e98a2b7b71f730a9699fcbdb7/autocomplete-3.3.1-sources.jar!/org/fife/ui/autocomplete/ParameterizedCompletionDescriptionToolTip.java</url>
+          <line>173</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fifesoft/autocomplete/3.3.1/7a3aa4a129761a9e98a2b7b71f730a9699fcbdb7/autocomplete-3.3.1-sources.jar!/org/fife/ui/autocomplete/ParameterizedCompletionContext.java</url>
+          <line>203</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/SnippetCompletion.java</url>
+          <line>125</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fifesoft/autocomplete/3.3.1/7a3aa4a129761a9e98a2b7b71f730a9699fcbdb7/autocomplete-3.3.1-sources.jar!/org/fife/ui/autocomplete/FunctionCompletion.java</url>
+          <line>323</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/firedragon91245/automaton/AutomatonGame.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="5" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="GradleRunConfiguration">
-        <watch expression="snippetCode.charAt(i)" language="JAVA" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>
