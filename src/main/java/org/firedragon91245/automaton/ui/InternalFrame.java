@@ -1,4 +1,4 @@
-package org.firedragon91245.automaton;
+package org.firedragon91245.automaton.ui;
 
 import javax.swing.*;
 import java.awt.*;

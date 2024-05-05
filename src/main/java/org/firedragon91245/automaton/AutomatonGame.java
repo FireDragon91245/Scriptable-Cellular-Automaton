@@ -1,25 +1,40 @@
 package org.firedragon91245.automaton;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import de.milchreis.uibooster.UiBooster;
 import de.milchreis.uibooster.model.Form;
 import de.milchreis.uibooster.model.FormBuilder;
 import de.milchreis.uibooster.model.UiBoosterOptions;
+import org.fife.rsta.ui.search.FindDialog;
+import org.firedragon91245.automaton.json.JsonExcludePolicy;
+import org.firedragon91245.automaton.ui.CodeEditor;
+import org.firedragon91245.automaton.ui.UICallbackWrappers;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.List;
 
 public class AutomatonGame extends JFrame {
 
-    CodeEditor codeEditor = new CodeEditor();
+    public final GameSettings settings = new GameSettings();
+    private final CodeEditor codeEditor = new CodeEditor(this);
+    private final UIComponents uiComponents = new UIComponents();
+    public final Gson gson = buildGson();
 
     public AutomatonGame() {
         setTitle("Scriptable Automaton - By FireDragon91245");
         Dimension dim = GetMonitorDimensions();
         setSize(dim);
-        setVisible(true);
 
         initUI();
+    }
+
+    private Gson buildGson() {
+        GsonBuilder builder = new GsonBuilder();
+        builder.setExclusionStrategies(new JsonExcludePolicy());
+        return builder.create();
     }
 
     private JMenuBar generateMenuBar()
@@ -53,6 +68,7 @@ public class AutomatonGame extends JFrame {
             }
         });
         viewCodeEditor.setVisible(true);
+        this.uiComponents.viewCodeEditor = viewCodeEditor;
         view.add(viewCodeEditor);
 
         JCheckBoxMenuItem viewCellManager = new JCheckBoxMenuItem("Cell Manager");
@@ -85,7 +101,7 @@ public class AutomatonGame extends JFrame {
         return menuBar;
     }
 
-    private void menuViewReloadView(ActionEvent event) {
+    public void menuViewReloadView(ActionEvent event) {
         SwingUtilities.updateComponentTreeUI(this);
         this.validate();
         this.repaint();
@@ -99,42 +115,34 @@ public class AutomatonGame extends JFrame {
 
     private void initUI() {
         JDesktopPane desktop = new JDesktopPane();
-
         desktop.setSize(getSize());
         desktop.setVisible(true);
         setContentPane(desktop);
 
+        JMenuBar menuBar = generateMenuBar();
+
+        codeEditor.initFindDialogs();
         codeEditor.setSize(200, 100);
         codeEditor.setLocation(new Point(100, 100));
-        //frame.useAsParent(desktop);
-
-        //InternalFrame frame2 = new InternalFrame("test");
-        //JList<String> list = new JList<String>(new String[]{"Hello", "World", "Test", "List", "Items"});
-        //JLabel lbl = new JLabel();
-        //lbl.setText("Hello World");
-        //lbl.setIcon(GameIcons.SNIPPET_ICON);
-        //lbl.setVisible(true);
-        //list.setVisible(true);
-        //frame2.add(list);
-        //frame2.setVisible(true);
-        //frame2.setSize(200, 100);
-        //desktop.add(frame2);
-
-
-        desktop.add(codeEditor);
-
-        JMenuBar menuBar = generateMenuBar();
-        setJMenuBar(menuBar);
-
         codeEditor.useAsParent(desktop);
         codeEditor.updateMenuBarCallback(menuBar::updateUI);
+        codeEditor.addComponentListener(new UICallbackWrappers.PositionSizeListener(settings::setCodeEditorRectangle, this));
+        codeEditor.addInternalFrameListener(new UICallbackWrappers.InternalFrameCloseOpenListener(List.of(settings::setCodeEditorVisible, uiComponents.viewCodeEditor::setSelected)));
 
+        menuBar.add(codeEditor.getSearchMenu());
+
+        setJMenuBar(menuBar);
         menuBar.updateUI();
 
+        desktop.add(codeEditor);
     }
 
     private Dimension GetMonitorDimensions() {
         DisplayMode m = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode();
         return new Dimension(m.getWidth(), m.getHeight());
+    }
+
+    private class UIComponents {
+        public JCheckBoxMenuItem viewCodeEditor;
     }
 }
