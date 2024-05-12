@@ -4,6 +4,9 @@ import org.fife.ui.autocomplete.*;
 import org.firedragon91245.automaton.ui.GameIcons;
 import org.firedragon91245.automaton.ui.LuaCellRenderer;
 
+import javax.swing.*;
+import javax.swing.text.JTextComponent;
+import java.awt.*;
 import java.util.List;
 
 public class LuaAutocomplete {

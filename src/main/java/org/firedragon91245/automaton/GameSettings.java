@@ -22,7 +22,13 @@ public class GameSettings {
     @JsonExclude
     private final ArrayList<SaveOperationCallback> saveOperationsCallback = new ArrayList<>();
     public Rectangle codeEditorPosition;
-    public Boolean codeEditorVisibility = false;
+    public boolean codeEditorVisibility = false;
+
+    public void setCodeEditorFindAndReplaceSplitBarPos(int codeEditorFindAndReplaceSplitBarPos) {
+        this.codeEditorFindAndReplaceSplitBarPos = codeEditorFindAndReplaceSplitBarPos;
+    }
+
+    public int codeEditorFindAndReplaceSplitBarPos = 0;
 
     public void SafeGameSettings(File f) {
         if (f.canWrite()) {

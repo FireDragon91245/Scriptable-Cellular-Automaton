@@ -13,10 +13,13 @@ import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 import org.fife.ui.rtextarea.RTextScrollPane;
 import org.fife.ui.rtextarea.SearchContext;
 import org.firedragon91245.automaton.AutomatonGame;
+import org.firedragon91245.automaton.GameSettings;
 import org.firedragon91245.automaton.LuaAutocomplete;
 import org.firedragon91245.automaton.json.JsonExcludePolicy;
 
 import javax.swing.*;
+import javax.swing.event.InternalFrameAdapter;
+import javax.swing.event.InternalFrameEvent;
 import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.awt.event.*;
@@ -27,14 +30,11 @@ import java.util.ArrayList;
 
 public class CodeEditor extends InternalFrame implements SearchListener {
 
-    private final ArrayList<Component> components = new ArrayList<>();
-
     private RSyntaxTextArea te;
     private FindToolBar findToolBar;
     private ReplaceToolBar replaceToolBar;
     private FindDialog findDialog;
     private ReplaceDialog replaceDialog;
-    private CollapsibleSectionPanel csp;
     private AutomatonGame topLevelComponent;
     private JPanel findAndReplacePanel;
     private JSplitPane splitPane;
@@ -55,7 +55,6 @@ public class CodeEditor extends InternalFrame implements SearchListener {
         findAndReplacePanel = new JPanel();
         findAndReplacePanel.setVisible(true);
         splitPane.setBottomComponent(findAndReplacePanel);
-
 
         te = new RSyntaxTextArea();
         te.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_LUA);
@@ -79,16 +78,8 @@ public class CodeEditor extends InternalFrame implements SearchListener {
         ac.setAutoActivationDelay(800);
         ac.setParameterAssistanceEnabled(true);
         ac.install(te);
-    }
 
-    @Override
-    public void componentResized(ComponentEvent e) {
-        super.componentResized(e);
-
-        for(Component c : components)
-        {
-            c.setSize(this.getSize());
-        }
+        splitPane.addPropertyChangeListener(JSplitPane.DIVIDER_LOCATION_PROPERTY, evt -> topLevelComponent.settings.setCodeEditorFindAndReplaceSplitBarPos((int) evt.getNewValue()));
     }
 
     public void initFindDialogs() {

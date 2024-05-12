@@ -1,6 +1,7 @@
 plugins {
     id("java")
     id("application")
+    id("antlr")
 }
 
 group = "org.firedragon91245"
@@ -19,6 +20,10 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 
+    antlr("org.antlr:antlr4:4.13.1")
+
+    implementation("org.antlr:antlr4-runtime:4.13.1")
+
     implementation("com.github.Milchreis:UiBooster:1.20.1")
 
     implementation("com.fifesoft:rsyntaxtextarea:3.4.0")
@@ -30,4 +35,13 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.generateGrammarSource {
+    arguments.addAll(listOf("-visitor", "-long-messages"))
+}
+
+tasks.withType(JavaCompile::class)
+{
+    options.encoding = "UTF-8"
 }
